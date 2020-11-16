@@ -1,0 +1,15 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: order-comsumer
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+
+dubbo:
+  application:
+    qos-enable: false #关闭dubbo在线运维工具
+  cloud:
+    subscribed-services: order-privoder  #订阅的服务名称,多个服务之间通过,分割

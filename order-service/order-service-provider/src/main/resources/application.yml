@@ -1,0 +1,22 @@
+server:
+  port: 8000
+spring:
+  application:
+    name: order-privoder
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+
+dubbo:
+  protocol: # name:dubbo采用dubbo协议 port:-1代表自动选择端口
+    port: -1
+    name: dubbo
+  scan: # dubbo服务路径
+    base-packages: com.example.orderserviceprovider
+  application:
+    qos-enable: false #关闭dubbo在线运维工具
+  registry:
+    address: spring-cloud://localhost #挂载到SpringCloud注册中心
+  cloud:
+    subscribed-services: / #订阅的服务名称，默认订阅所有服务，provider无须订阅服务所以配置为/
